@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+    <div [class]="divClass">
+        <mat-form-field [class]="formFieldClass">
+
+            <input  #click matInput [placeholder]="placeholder" formControlName="data" [matDatepicker]="dp">
+            <mat-datepicker-toggle matSuffix [for]="dp">
+               
+            </mat-datepicker-toggle>
+            <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)"
+                (monthSelected)="chosenMonthHandler($event, dp)" panelClass="example-month-picker">
+            </mat-datepicker>
+            <mat-error *ngIf="form.controls['data'].hasError('required')"> Validator required message</mat-error>
+            <mat-error *ngIf="form.controls['data'].hasError('message')">
+                {{form.controls['data'].errors.message}}</mat-error>
+
+           
+        </mat-form-field>
+    </div>
+</form>
